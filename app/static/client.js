@@ -17,7 +17,6 @@ function showPicked(input) {
     reader.readAsText(input); 
 }
 
-
 function analyze() {
 //    var uploadFiles = el('file-input').files;
 //    if (uploadFiles.length != 1) alert('Please select 1 file to analyze!');
@@ -38,7 +37,6 @@ function analyze() {
         }
         el('analyze-button').innerHTML = 'Analyze';
     }
-
 
  //   var fileData = new FormData();
      var fileData = {
