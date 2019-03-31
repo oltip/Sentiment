@@ -9,7 +9,7 @@ from io import BytesIO
 from fastai.text import * 
 
 # Here give where is the file / google cloud 
-export_file_url = 'https://drive.google.com/file/d/1BQTagMmaZeY0zSWp1CppRrHlM--WviTK/view'
+export_file_url = 'https://drive.google.com/drive/u/0/folders/1wahRzSxnncL0APFxRSduzGXnCH9BidzI'
 
 
 # we have created another folder within the datafile in order to use the same code 
