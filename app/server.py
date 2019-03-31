@@ -5,15 +5,16 @@ from starlette.middleware.cors import CORSMiddleware
 import uvicorn, aiohttp, asyncio
 from io import BytesIO
 
-from fastai import *
-# from fastai.vision import *
+
 from fastai.text import * 
 
 # Here give where is the file / google cloud 
-model_file_url = 'https://drive.google.com/drive/u/0/folders/1oqKpXXdxn3_IhVY2A779wNZB2BX8iDPu'
+export_file_url = 'https://drive.google.com/file/d/1BQTagMmaZeY0zSWp1CppRrHlM--WviTK/view'
+
 
 # we have created another folder within the datafile in order to use the same code 
-model_file_name = 'model'    # actually, if you click on order, it will create another url 
+#model_file_name = 'model'    # actually, if you click on order, it will create another url 
+export_file_name = 'export.pkl'  
 
 
 classes = ['positive', 'negative'] 
@@ -35,17 +36,12 @@ async def download_file(url, dest):
 
 
 async def setup_learner():
-	# Ok, here we have to intervene 
-    await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')    # Do we need to download the encoder as well??? 
+# Ok, here we have to intervene 
+    await download_file(export_file_url, path/export_file_name)    # Do we need to download the encoder as well??? 
 
-    # change Image to Text and modify the rest 
-    data_bunch = TextDataBunch.single_from_classes(path, classes,
-        tfms=get_transforms(), size=224).normalize(imagenet_stats)
+    learn = load_learner(path, export_file_name)
+    return learn 
 
-    # This should be adapted for text 
-    learn = create_cnn(data_bunch, models....., pretrained=False)    # Why pretrained False? 
-    learn.load(model_file_name)
-    return learn
 
 # This piece should be standard 
 loop = asyncio.get_event_loop()
@@ -55,16 +51,27 @@ loop.close()
 
 @app.route('/')
 def index(request):
-    html = path/'view'/'index.html'
+    html = path/'view'/'index_1.html'
     return HTMLResponse(html.open().read())
 
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
-    data = await request.form()
-    img_bytes = await (data['file'].read())
-    img = open_image(BytesIO(img_bytes))
-    prediction = learn.predict(img)[0]
+    data = await request.json()
+    print('data:', data ) 
+	
+    img = data['textField']            # ok, it should be a part of Json, a textField key value 
+#   What we have done in the previous line of code, is to receive the text that people would insert 
+
+
+    print("data['textField']", data["textField"])
+    print("img:", img)
+
+#    prediction = learn.predict(img)[0]
+    prediction = learn.predict(img)     # show all of that string object
+
+    # THIS IS THE RESULT THAT WILL BE SHOWN 
+
     return JSONResponse({'result': str(prediction)})
 
 if __name__ == '__main__':
