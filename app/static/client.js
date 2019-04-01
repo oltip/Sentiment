@@ -1,4 +1,3 @@
-
 var el = x => document.getElementById(x);
 
 // function showPicker(inputId) { el('file-input').click(); }
@@ -27,7 +26,6 @@ function analyze() {
     var loc = window.location
     xhr.open('POST', `${loc.protocol}//${loc.hostname}:${loc.port}/analyze`, true);
     xhr.setRequestHeader("Content-Type", "application/json");
-
     xhr.onerror = function() {alert (xhr.responseText);}
     xhr.onload = function(e) {
         if (this.readyState === 4) {
@@ -39,7 +37,7 @@ function analyze() {
     }
 
  //   var fileData = new FormData();
-     var fileData = {
+    var fileData = {
         "textField": uploadFiles.value
     };
  //   fileData.append('file', uploadFiles[0]);
