@@ -72,7 +72,6 @@ async def analyze(request):
     img = data['textField']            # ok, it should be a part of Json, a textField key value 
 #   What we have done in the previous line of code, is to receive the text that people would insert 
 
-
     print("data['textField']", data["textField"])
     print("img:", img)
 
@@ -80,7 +79,7 @@ async def analyze(request):
     prediction = learn.predict(img)     # show all of that string object
 
     # THIS IS THE RESULT THAT WILL BE SHOWN 
-
+    print("prediction:", prediction)
     return JSONResponse({'result': str(prediction)})
 
 if __name__ == '__main__':
