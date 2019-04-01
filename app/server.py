@@ -60,7 +60,7 @@ loop.close()
 
 @app.route('/')
 def index(request):
-    html = path/'view'/'index_1.html'
+    html = path/'view'/'index.html'
     return HTMLResponse(html.open().read())
 
 

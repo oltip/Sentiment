@@ -1,36 +1,43 @@
 <html lang='en'>
+
 <head>
     <meta charset='utf-8'>
     <link rel='stylesheet' href='../static/style.css'>
     <script src='../static/client.js'></script>
 </head>
+
+
 <body>
+
 <div>
     <div class='center'>
-        <div class='title'>Classify Bear Images 🐻</div>
+        <div class='title'>Classify Positive 👍 vs Negative Phrases 👎</div>
         <p>
-            Use images of <strong>teddy</strong> bears, <strong>black</strong> bears, <strong>grizzly</strong> bears, or
-            all three!
+            Would you like to know whether a tweet is <strong>positive</strong> or <strong>negative</strong>?  Try it here !!!!  
         </p>
         <div class='content'>
             <div class='no-display'>
-                <input id='file-input'
+                <!---input id='file-input'
                        class='no-display'
                        type='file'
                        name='file'
                        accept='image/*'
-                       onchange='showPicked(this)'>
+                       onchange='showPicked(this) ---> 
             </div>
-            <button class='choose-file-button' type='button' onclick='showPicker()'>Select Image</button>
-            <div class='upload-label'>
-                <label id='upload-label'>No file chosen</label>
-            </div>
-            <div>
-                <img id='image-picked' class='no-display' alt='Chosen Image' height='200'>
-            </div>
+
+            <form class='choose-file-button' type='text'>    
+
+            	<input id="review text" text="text" name="firstname" value="Type here your phrase">
+
+            </form>  
+ 
+
             <div class='analyze'>
-                <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Analyze</button>
+
+                <button id='analyze-button' class='analyze-button' type='button' onclick='analyze()'>Get sentiment</button>
+
             </div>
+
             <div class='result-label'>
                 <label id='result-label'></label>
             </div>
