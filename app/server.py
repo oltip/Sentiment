@@ -9,9 +9,9 @@ from io import BytesIO
 from fastai.text import * 
 
 # Here give where is the file / google cloud 
-#export_file_url = 'https://drive.google.com/drive/u/0/folders/1wahRzSxnncL0APFxRSduzGXnCH9BidzI' 
-#export_file_url = 'https://drive.google.com/file/d/1BQTagMmaZeY0zSWp1CppRrHlM--WviTK'
-export_file_url = 'https://drive.google.com/file/d/1uNRl4iF3uyBjNgaRcXFYhj95mKIIBON2/view?usp=sharing' 
+
+# export_file_url = 'https://drive.google.com/file/d/1uNRl4iF3uyBjNgaRcXFYhj95mKIIBON2/view?usp=sharing' 
+export_file_url = 'https://drive.google.com/uc?export=download&id=1uNRl4iF3uyBjNgaRcXFYhj95mKIIBON2'
 
 # we have created another folder within the datafile in order to use the same code 
 #model_file_name = 'model'    # actually, if you click on order, it will create another url 
